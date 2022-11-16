@@ -9,7 +9,7 @@ export const Board = styled.div`
   border: 0.1rem solid rgba(204, 204, 204, 0.4);
   border-radius: 1.6rem;
 
-  header {
+  > header {
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -24,7 +24,7 @@ export const OrdersContainer = styled.section`
   width: 100%;
   margin-top: 2.4rem;
 
-  button {
+  > button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,11 +35,11 @@ export const OrdersContainer = styled.section`
     height: 12.8rem;
     border-radius: 0.8rem;
 
-    strong {
+    > strong {
       font-weight: 500;
     }
 
-    span {
+    > span {
       color: #666666;
       font-size: 1.4rem;
     }

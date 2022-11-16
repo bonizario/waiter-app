@@ -77,6 +77,11 @@ export const GlobalStyles = createGlobalStyle`
     font: 400 1.6rem GeneralSans, sans-serif;
   }
 
+  html, body {
+    width: 100vw;
+    height: 100vh;
+  }
+
   @media (min-width: 43.75em) {
     :root {
       font-size: 62.5%;
