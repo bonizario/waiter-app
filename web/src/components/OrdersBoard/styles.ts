@@ -35,6 +35,10 @@ export const OrdersContainer = styled.section`
     height: 12.8rem;
     border-radius: 0.8rem;
 
+    & + button {
+      margin-top: 2.4rem;
+    }
+
     > strong {
       font-weight: 500;
     }
@@ -43,9 +47,5 @@ export const OrdersContainer = styled.section`
       color: #666666;
       font-size: 1.4rem;
     }
-  }
-
-  button + button {
-    margin-top: 2.4rem;
   }
 `;
