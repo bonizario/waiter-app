@@ -51,7 +51,6 @@ export const GlobalStyles = createGlobalStyle`
     outline: 0;
     border: none;
     box-sizing: border-box;
-    font-family: GeneralSans, sans-serif;
   }
 
   a {
@@ -64,16 +63,18 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    color: #333;
     background-color: #fafafa;
     -webkit-font-smoothing: antialiased;
   }
 
   button {
-    color: #333;
     cursor: pointer;
-    font-size: 1rem;
     background: none;
+  }
+
+  body, input, button, textarea {
+    color: #333;
+    font: 400 1.6rem GeneralSans, sans-serif;
   }
 
   @media (min-width: 43.75em) {
