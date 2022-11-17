@@ -73,6 +73,10 @@ Já a api, usando Node.js, Express e MongoDB.
 
 Os layouts do app estão disponíveis no **Figma**: https://www.figma.com/file/dm7tP9X81c5loLur8Z3Y91/WAITERAPP
 
+<p align="center">
+  <img src="./.github/layout.png" alt="WAITERAPP" />
+</p>
+
 <br />
 
 # 🤔 Como executar
