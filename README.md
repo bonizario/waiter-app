@@ -56,7 +56,8 @@
 Nele, garçons podem anotar pedidos pelo app e enviá-los para o dashboard web, em formato de kanban,
 dividido em 3 colunas: 🕒 Fila de espera, 👨‍🍳 Em produção e ✅ Pronto!
 
-O projeto foi desenvolvido inteiramente em Typescript.
+O projeto foi desenvolvido inteiramente em Typescript durante o evento [O Poder do JS](https://opoderdojs.jstack.com.br/),
+ministrado pelo [Mateus Silva](https://www.linkedin.com/in/mateusilva/).
 
 O frontend web e mobile foram construídos usando React, React Native, Expo, Vite e Styled Components.
 Já a api, usando Node.js, Express e MongoDB.
@@ -81,19 +82,68 @@ Os layouts do app estão disponíveis no **Figma**: https://www.figma.com/file/d
 
 # 🤔 Como executar
 
-Para clonar esse repositório pelo terminal, é necessário possuir o [Git](https://git-scm.com/)
- instalado em sua máquina.
+Para clonar esse repositório pelo terminal, utilize o [Git](https://git-scm.com/).
+
+Para instalar as dependências e executar o projeto, é necessário possuir o [Node.js](https://nodejs.org/) instalado em sua máquina.
+O app mobile pode ser visualizado através do [Expo](https://expo.dev/) em um dispositivo físico ou emulador (Android ou iOS).
+
+<table>
+<tr>
+<td align="center">Clonar repositório</td><td align="center">API</td>
+</tr>
+<tr>
+<tr>
+<td>
 
 ```bash
 # Clone o repositório
-$ git clone https://github.com/bonizario/waiter-app.git
+git clone https://github.com/bonizario/waiter-app.git
 
 # Entre na pasta do projeto
-$ cd waiter-app
+cd waiter-app
 ```
 
-Para instalar as dependências e executar o projeto, é necessário possuir o NodeJS instalado em sua máquina.
-Além disso, o Mobile é executado pela plataforma Expo.
+</td>
+<td>
+
+```bash
+# Dependências da API back-end
+cd api && npm install
+
+# Execute a API
+npm run dev
+```
+
+</td>
+</tr>
+<tr>
+<td align="center">Web</td><td align="center">Mobile</td>
+</tr>
+<tr>
+<td>
+
+```bash
+# Dependências do front-end web
+cd web && npm install
+
+# Execute o front-end web
+npm run dev
+```
+
+</td>
+<td>
+
+```bash
+# Dependências do app mobile
+cd mobile && npm install
+
+# Execute o app mobile (Expo)
+npx expo start
+```
+
+</td>
+</tr>
+</table>
 
 <br />
 
