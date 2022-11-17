@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./.github/banner.png" alt="WAITERAPP" />
+  <img src="./.github/banner-logo.png" alt="WAITERAPP" />
 </p>
 
 <p align="center">
