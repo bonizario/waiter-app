@@ -22,7 +22,7 @@ export function TableModal({ visible, onClose, onSave }: TableModalProps) {
   }
 
   return (
-    <Modal transparent visible={visible}>
+    <Modal transparent visible={visible} statusBarTranslucent>
       <Overlay behavior={Platform.OS === 'android' ? 'height' : 'padding'}>
         <Body>
           <Header>
