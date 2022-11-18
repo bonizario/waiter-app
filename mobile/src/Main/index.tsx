@@ -1,6 +1,9 @@
 import { useState } from 'react';
 
+import { CartItem } from '../@types/CartItem';
+import { Product } from '../@types/Product';
 import { Button } from '../components/Button';
+import { Cart } from '../components/Cart';
 import { Categories } from '../components/Categories';
 import { Header } from '../components/Header';
 import { Menu } from '../components/Menu';
@@ -16,6 +19,7 @@ import {
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
   const [selectedTable, setSelectedTable] = useState('');
+  const [cartItems, _setCartItems] = useState<CartItem[]>([]);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
@@ -23,6 +27,13 @@ export function Main() {
 
   function handleCancelOrder() {
     setSelectedTable('');
+  }
+
+  function handleAddToCart(product: Product) {
+    if (!selectedTable) {
+      setIsTableModalVisible(true);
+    }
+    alert(product.name);
   }
 
   return (
@@ -36,12 +47,14 @@ export function Main() {
           <Categories />
         </CategoriesContainer>
         <MenuContainer>
-          <Menu />
+          <Menu onAddToCart={handleAddToCart} />
         </MenuContainer>
       </Container>
       <Footer>
         <FooterContainer>
-          {!selectedTable && (
+          {selectedTable ? (
+            <Cart cartItems={cartItems} />
+          ) : (
             <Button onPress={() => setIsTableModalVisible(true)}>
               Novo Pedido
             </Button>
