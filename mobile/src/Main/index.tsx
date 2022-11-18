@@ -25,7 +25,7 @@ export function Main() {
     setSelectedTable(table);
   }
 
-  function handleCancelOrder() {
+  function handleResetOrder() {
     setSelectedTable('');
     setCartItems([]);
   }
@@ -67,7 +67,7 @@ export function Main() {
       <Container>
         <Header
           selectedTable={selectedTable}
-          onCancelOrder={handleCancelOrder}
+          onCancelOrder={handleResetOrder}
         />
         <CategoriesContainer>
           <Categories />
@@ -83,6 +83,7 @@ export function Main() {
               cartItems={cartItems}
               onAdd={handleAddCartItem}
               onRemove={handleDecrementCartItem}
+              onFinishOrder={handleResetOrder}
             />
           ) : (
             <Button onPress={() => setIsTableModalVisible(true)}>
