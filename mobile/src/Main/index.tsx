@@ -19,7 +19,7 @@ import {
 export function Main() {
   const [isTableModalVisible, setIsTableModalVisible] = useState(false);
   const [selectedTable, setSelectedTable] = useState('');
-  const [cartItems, _setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   function handleSaveTable(table: string) {
     setSelectedTable(table);
@@ -27,13 +27,39 @@ export function Main() {
 
   function handleCancelOrder() {
     setSelectedTable('');
+    setCartItems([]);
   }
 
-  function handleAddToCart(product: Product) {
+  function handleAddCartItem(product: Product) {
     if (!selectedTable) {
       setIsTableModalVisible(true);
     }
-    alert(product.name);
+    setCartItems(prevState => {
+      const itemIndex = prevState.findIndex(
+        cartItem => cartItem.product._id === product._id
+      );
+      if (itemIndex < 0) {
+        return [...prevState, { product, quantity: 1 }];
+      }
+      const newCartItems = [...prevState];
+      newCartItems[itemIndex].quantity += 1;
+      return newCartItems;
+    });
+  }
+
+  function handleDecrementCartItem(product: Product) {
+    setCartItems(prevState => {
+      const itemIndex = prevState.findIndex(
+        cartItem => cartItem.product._id === product._id
+      );
+      const newCartItems = [...prevState];
+      if (newCartItems[itemIndex].quantity > 1) {
+        newCartItems[itemIndex].quantity -= 1;
+      } else {
+        newCartItems.splice(itemIndex, 1);
+      }
+      return newCartItems;
+    });
   }
 
   return (
@@ -47,13 +73,17 @@ export function Main() {
           <Categories />
         </CategoriesContainer>
         <MenuContainer>
-          <Menu onAddToCart={handleAddToCart} />
+          <Menu onAddToCart={handleAddCartItem} />
         </MenuContainer>
       </Container>
       <Footer>
         <FooterContainer>
           {selectedTable ? (
-            <Cart cartItems={cartItems} />
+            <Cart
+              cartItems={cartItems}
+              onAdd={handleAddCartItem}
+              onRemove={handleDecrementCartItem}
+            />
           ) : (
             <Button onPress={() => setIsTableModalVisible(true)}>
               Novo Pedido
