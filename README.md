@@ -84,23 +84,37 @@ Os layouts do app estão disponíveis no **Figma**: https://www.figma.com/file/d
 
 Para clonar esse repositório pelo terminal, utilize o [Git](https://git-scm.com/).
 
-Para instalar as dependências e executar o projeto, é necessário possuir o [Node.js](https://nodejs.org/) instalado em sua máquina.
+```bash
+# Clonando por HTTPS
+git clone https://github.com/bonizario/waiter-app.git
+
+# Clonando por SSH
+git clone git@github.com:bonizario/waiter-app.git
+
+# Entre na pasta do projeto
+cd waiter-app
+```
+
+Para instalar as dependências e executar o projeto, é necessário possuir o [Node.js](https://nodejs.org/) instalado em sua máquina. Neste projeto, foi utilizada a versão LTS [18.12.0](https://nodejs.org/en/blog/release/v18.12.0/).
+
 O app mobile pode ser visualizado através do [Expo](https://expo.dev/) em um dispositivo físico ou emulador (Android ou iOS).
+
+Para executar o banco de dados MongoDB, foi utilizado um [Docker container](https://www.docker.com/resources/what-container/), mas existem outras alternativas como [MongoDB Atlas](https://www.mongodb.com/atlas/database) e [MongoDB Community](https://www.mongodb.com/try/download/community).
 
 <table>
 <tr>
-<td align="center">Clonar repositório</td><td align="center">API</td>
+<td align="center">Docker</td><td align="center">API</td>
 </tr>
 <tr>
 <tr>
 <td>
 
 ```bash
-# Clone o repositório
-git clone https://github.com/bonizario/waiter-app.git
+# Crie o container na porta padrão
+docker run --name mongo -p 27017:27017 -d mongo
 
-# Entre na pasta do projeto
-cd waiter-app
+# Verifique se está ativo
+docker ps -a
 ```
 
 </td>
