@@ -10,6 +10,12 @@ mongoose
     console.log('Connected to MongoDB successfully');
     const app = express();
     const PORT = 3333;
+    app.use((_request, response, next) => {
+      response.setHeader('Access-Control-Allow-Origin', '*');
+      response.setHeader('Access-Control-Allow-Methods', '*');
+      response.setHeader('Access-Control-Allow-Headers', '*');
+      return next();
+    });
     app.use(
       '/uploads',
       express.static(path.resolve(__dirname, '..', 'uploads'))
