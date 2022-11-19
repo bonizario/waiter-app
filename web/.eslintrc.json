@@ -3,19 +3,26 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/jsx-runtime",
-    "universe/web",
-    "plugin:prettier/recommended"
+    "universe/web"
   ],
-  "rules": {
-    "no-shadow": "warn",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
+  "overrides": [
+    {
+      "files": ["*.ts", "src/**/*.ts", "*.tsx", "src/**/*.tsx"],
+      "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "args": "after-used",
+            "caughtErrors": "all",
+            "ignoreRestSiblings": false,
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_",
+            "caughtErrorsIgnorePattern": "^_"
+          }
+        ]
       }
-    ]
-  }
+    }
+  ]
 }

@@ -1,17 +1,23 @@
 {
-  "extends": [
-    "universe/node",
-    "plugin:prettier/recommended"
-  ],
-  "rules": {
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
+  "extends": ["universe/node"],
+  "overrides": [
+    {
+      "files": ["src/**/*.ts"],
+      "rules": {
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "vars": "all",
+            "args": "after-used",
+            "caughtErrors": "all",
+            "ignoreRestSiblings": false,
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_",
+            "caughtErrorsIgnorePattern": "^_"
+          }
+        ]
       }
-    ]
-  }
+    }
+  ]
 }
