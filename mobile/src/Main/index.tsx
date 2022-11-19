@@ -142,6 +142,7 @@ export function Main() {
               onAdd={handleAddCartItem}
               onRemove={handleDecrementCartItem}
               onFinishOrder={handleResetOrder}
+              selectedTable={selectedTable}
             />
           ) : (
             <Button
