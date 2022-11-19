@@ -40,6 +40,14 @@ export function Main() {
     );
   }, []);
 
+  async function handleSelectCategory(categoryId: string) {
+    const route = !categoryId
+      ? '/products'
+      : `/categories/${categoryId}/products`;
+    const { data } = await api.get(route);
+    setProducts(data);
+  }
+
   function handleSaveTable(table: string) {
     setSelectedTable(table);
   }
@@ -95,7 +103,10 @@ export function Main() {
         ) : (
           <>
             <CategoriesContainer>
-              <Categories categories={categories} />
+              <Categories
+                categories={categories}
+                onSelectCategory={handleSelectCategory}
+              />
             </CategoriesContainer>
             {products.length > 0 ? (
               <MenuContainer>
