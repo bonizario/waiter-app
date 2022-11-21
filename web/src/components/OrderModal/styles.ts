@@ -117,6 +117,11 @@ export const Actions = styled.footer`
   flex-direction: column;
   margin-top: 3.2rem;
 
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   .primary {
     display: flex;
     align-items: center;

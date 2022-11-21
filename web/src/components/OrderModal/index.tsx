@@ -15,12 +15,20 @@ import {
 } from './styles';
 
 interface OrderModalProps {
+  isLoading: boolean;
+  onCancelOrder: () => Promise<void>;
   onClose: () => void;
   order: Order | null;
   visible: boolean;
 }
 
-export function OrderModal({ onClose, order, visible }: OrderModalProps) {
+export function OrderModal({
+  isLoading,
+  onCancelOrder,
+  onClose,
+  order,
+  visible,
+}: OrderModalProps) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
@@ -91,11 +99,16 @@ export function OrderModal({ onClose, order, visible }: OrderModalProps) {
           </Total>
         </OrderDetails>
         <Actions>
-          <button type="button" className="primary">
+          <button type="button" className="primary" disabled={isLoading}>
             <span>👨‍🍳</span>
             <strong>Iniciar Produção</strong>
           </button>
-          <button type="button" className="secondary">
+          <button
+            type="button"
+            className="secondary"
+            disabled={isLoading}
+            onClick={onCancelOrder}
+          >
             Cancelar Pedido
           </button>
         </Actions>
