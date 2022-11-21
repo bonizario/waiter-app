@@ -18,6 +18,7 @@ interface OrderModalProps {
   isLoading: boolean;
   onCancelOrder: () => Promise<void>;
   onClose: () => void;
+  onChangeOrderStatus: () => void;
   order: Order | null;
   visible: boolean;
 }
@@ -26,6 +27,7 @@ export function OrderModal({
   isLoading,
   onCancelOrder,
   onClose,
+  onChangeOrderStatus,
   order,
   visible,
 }: OrderModalProps) {
@@ -99,10 +101,21 @@ export function OrderModal({
           </Total>
         </OrderDetails>
         <Actions>
-          <button type="button" className="primary" disabled={isLoading}>
-            <span>👨‍🍳</span>
-            <strong>Iniciar Produção</strong>
-          </button>
+          {order.status !== 'DONE' && (
+            <button
+              type="button"
+              className="primary"
+              disabled={isLoading}
+              onClick={onChangeOrderStatus}
+            >
+              <span>{order.status === 'WAITING' ? '👨‍🍳' : '✅'}</span>
+              <strong>
+                {order.status === 'WAITING'
+                  ? 'Iniciar Produção'
+                  : 'Concluir Pedido'}
+              </strong>
+            </button>
+          )}
           <button
             type="button"
             className="secondary"
